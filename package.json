@@ -8,6 +8,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.3.0",
     "@vueuse/components": "^7.3.0",
     "@vueuse/core": "^7.3.0",
     "axios": "^0.24.0",

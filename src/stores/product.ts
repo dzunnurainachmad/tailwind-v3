@@ -10,11 +10,13 @@ export const useProductStore = defineStore({
   },
   actions: {
     async setProducts() {
-      const { data } = await axios.get('https://fakestoreapi.com/products?limit=5')
+      const { data } = await axios.get('https://fakestoreapi.com/products?limit=10')
       this.products = data
     },
     async setProductsByCategory(category: any) {
       const { data } = await axios.get(`https://fakestoreapi.com/products/category/${category}`)
+      console.log(data);
+      
       this.products = data
     }
   }

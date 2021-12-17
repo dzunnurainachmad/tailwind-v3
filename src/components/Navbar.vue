@@ -1,17 +1,17 @@
 <template>
   <div class="h-16 flex items-center w-full bg-primary shadow relative">
     <div>
-      <div class="text-quaternary px-5">
+      <div class="text-quaternary px-5" @click="$router.push('/')">
         Navbar
       </div>
     </div>
     <div class="relative flex flex-col items-center">
-      <div class="text-quaternary px-5 text-sm cursor-pointer" @click="modalCategory">
+      <div class="text-quaternary px-5 py-2 text-sm cursor-pointer" @click="modalCategory">
         Category
       </div>
       <OnClickOutside v-if="toggleCategory" @trigger.stop="modalCategory" class="absolute top-10 bg-white cursor-pointer text-xs shadow">
-        <div v-for="category in categories" class="p-2 hover:bg-tertiary w-36 text-center">
-          <div class="" @click.prevent="clickSetCategory(category)">
+        <div v-for="category in categories" >
+          <div @click.prevent="clickSetCategory(category)" class="p-2 hover:bg-tertiary w-36 text-center">
             {{category}}
           </div>
         </div>
