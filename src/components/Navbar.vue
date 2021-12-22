@@ -1,7 +1,7 @@
 <template>
   <div class="h-16 flex items-center w-full bg-primary shadow relative">
     <div>
-      <div class="text-quaternary px-5" @click="$router.push('/')">
+      <div class="text-quaternary px-5 cursor-pointer" @click="$router.push('/')">
         Navbar
       </div>
     </div>
@@ -46,14 +46,13 @@ export default defineComponent({
     modalCategory() {
       this.toggleCategory = !this.toggleCategory
     },
-    async clickSetCategory(category:any) {
+    async clickSetCategory(category:string) {
       this.toggleCategory = false
-      this.setIsLoading()
-      await this.setProductsByCategory(category)
-      this.setIsLoading()
+      this.$router.push({ name: 'ProductCategory', params: { productCategory: category } })
     },
     ...mapActions(useProductStore, ['setProductsByCategory']),
-    ...mapActions(useIsLoading, ['setIsLoading'])
+    ...mapActions(useIsLoading, ['setIsLoading']),
+    ...mapActions(useProductStore, ['setProducts']),
   },
   mounted() {
     this.getCategories()

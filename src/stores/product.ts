@@ -18,6 +18,6 @@ export const useProductStore = defineStore({
       console.log(data);
       
       this.products = data
-    }
+    },
   }
 })

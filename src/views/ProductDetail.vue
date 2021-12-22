@@ -1,9 +1,11 @@
 <template>
   <div class="text-primary bg-quaternary height-screen">
-    <div class="flex">
+    <div class="flex justify-center">
       <div v-if="!isLoading" class="w-screen">
-        <div class="bg-white p-5 flex justify-center items-center">
-          <img :src="product.image" alt="" class="h-80">
+        <div class="bg-white p-5 flex justify-center items-center h-80">
+          <div class="w-80 flex justify-center items-center">
+            <img :src="product.image" alt="" class="h-60">
+          </div>
         </div>
         <div class="flex justify-between p-5">
           <div class="font-bold text-2xl">
@@ -53,11 +55,11 @@ export default defineComponent ({
     },
     ...mapActions(useIsLoading, ['setIsLoading'])
   },
-  mounted() {
+  async mounted() {
     this.setIsLoading()
     console.log(this.isLoading, 'isLoading');
     
-    this.fetchProductDetail()
+    await this.fetchProductDetail()
     this.setIsLoading()
   }
 })

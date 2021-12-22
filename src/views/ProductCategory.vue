@@ -4,7 +4,6 @@ import { useProductStore } from "@/stores/product"
 import { useIsLoading } from "@/stores/isLoading"
 import { mapState, mapActions } from 'pinia'
 import { Icon } from '@iconify/vue';
-import router from "@/router";
 export default defineComponent ({
   name: "home",
   components: {
@@ -15,16 +14,16 @@ export default defineComponent ({
     ...mapState(useIsLoading, ['isLoading'])
   },
   methods: {
-    ...mapActions(useProductStore, ['setProducts']),
+    ...mapActions(useProductStore, ['setProductsByCategory']),
 
     ...mapActions(useIsLoading, ['setIsLoading']),
     getDetailProduct(id: number) {
-      router.push({ name: 'ProductDetail', params: { productId: id }})
+      this.$router.push({ name: 'ProductDetail', params: { productId: id }})
     }
   },
   async mounted() {
     this.setIsLoading()
-    await this.setProducts()
+    await this.setProductsByCategory(this.$route.params.productCategory)
     this.setIsLoading()
   }
 })
